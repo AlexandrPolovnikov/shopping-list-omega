@@ -52,3 +52,12 @@
         right: 36px;
     }
 }
+@media (max-width: 768px) {
+    .item {
+        width: 50vw;
+        height: 110vw;
+        &__name-box {
+            flex-wrap: wrap;
+        }
+    }
+}
