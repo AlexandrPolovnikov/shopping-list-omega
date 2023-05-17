@@ -1,7 +1,7 @@
-import { COLOR_TYPES } from "../../library/constants.enum";
-import { ListItem, Product } from "../../library/interfaces";
-import Button from "../Button";
-import "./index.scss";
+import { COLOR_TYPES } from '../../library/constants.enum';
+import { ListItem, Product } from '../../library/interfaces';
+import Button from '../Button';
+import './index.scss';
 
 export interface NormalizedItem {
     id: number;
@@ -26,27 +26,21 @@ const getItems = (list: ListItem[], goods: Product[]): NormalizedItem[] => {
             });
             return acc;
         },
-        []
+        [],
     );
 
     return normalizedItems;
 };
 
-const ItemsList = ({
-    list,
-    goods,
-    onBuy,
-    onDelete,
-}: ItemListProps): JSX.Element => (
+const ItemsList = ({ list, goods, onBuy, onDelete }: ItemListProps): JSX.Element => (
     <div className="items-list">
         {getItems(list, goods).map((normalizedItem: NormalizedItem) => (
             <div key={normalizedItem.id} className="items-list__item">
                 <div>{normalizedItem.item?.name}</div>
+                <div>
+                    {normalizedItem.item?.price}руб x {normalizedItem.amount}
+                </div>
                 <div className="items-list__amount-box flex-center">
-                    <div>
-                        {normalizedItem.item?.price}руб x{" "}
-                        {normalizedItem.amount}
-                    </div>
                     <Button
                         text="Купить"
                         type={COLOR_TYPES.info}
